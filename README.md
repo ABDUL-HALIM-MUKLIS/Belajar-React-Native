@@ -18,7 +18,13 @@
     npx react-native init name-project
 ```
 
-[Tutorial](https://www.youtube.com/watch?v=sWRDmJBAAu8) 10:50
+7. Menjalankan Project
+
+```
+    yarn android
+```
+
+[Tutorial](https://www.youtube.com/watch?v=sWRDmJBAAu8) 27:30
 
 https://androidstudio.googleblog.com/2019/10/android-emulator-hypervisor-driver-for.html
 https://github.com/google/android-emulator-hypervisor-driver-for-amd-processors/wiki/Is-Hyper-V-really-disabled%3F
