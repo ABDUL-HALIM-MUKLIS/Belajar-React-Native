@@ -8,8 +8,8 @@ class App extends Component {
   }
   render() {
     return (
-      <View>
-        <Text>Hello Word!</Text>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Hello Word 1!</Text>
       </View>
     );
   }
