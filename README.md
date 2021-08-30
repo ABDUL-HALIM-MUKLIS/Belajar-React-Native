@@ -443,7 +443,17 @@ import {Alert} from 'react-native';
 - Cara pengunaan
 
 ```js
-
+Alert.alert('Perhatian', 'Apakah anda yakin untuk menutup aplikasi ?', [
+  {
+    text: 'Cancel',
+    onPress: () => null,
+    style: 'Cancel',
+  },
+  {
+    text: 'Yes',
+    onPress: () => BackKandler.exitApp(),
+  },
+]);
 ```
 
 3. [Animated](https://reactnative.dev/docs/animated)
@@ -524,7 +534,33 @@ import {Modal} from 'react-native';
 - Cara pengunaan
 
 ```js
+state = {
+  modalVisible: false,
+};
 
+setModalVisible = visible => {
+  this.setState({modalVisible: visible});
+};
+
+<Modal
+  animationType="slide"
+  transparent={true}
+  visible={modalVisible}
+  onRequestClose={() => {
+    Alert.alert('Modal has been closed.');
+    this.setModalVisible(!modalVisible);
+  }}>
+  <View style={styles.centeredView}>
+    <View style={styles.modalView}>
+      <Text style={styles.modalText}>Hello World!</Text>
+      <Pressable
+        style={[styles.button, styles.buttonClose]}
+        onPress={() => this.setModalVisible(!modalVisible)}>
+        <Text style={styles.textStyle}>Hide Modal</Text>
+      </Pressable>
+    </View>
+  </View>
+</Modal>;
 ```
 
 8. [PixelRatio](https://reactnative.dev/docs/pixelratio)
@@ -570,18 +606,24 @@ refreshControl={
 ```
 
 10. [StatusBar](https://reactnative.dev/docs/statusbar)
-    > Tampilan Loading pada Andorid
+    > Tampilan yang berada pada atas sendiri tempat sinyal jam dll
 
 - Inport component
 
 ```js
-import {RefreshControl} from 'react-native';
+import {StatusBar} from 'react-native';
 ```
 
 - Cara pengunaan
 
 ```js
-
+<StatusBar
+  animated={true}
+  backgroundColor="#61dafb"
+  barStyle={statusBarStyle}
+  showHideTransition={statusBarTransition}
+  hidden={hidden}
+/>
 ```
 
 [Tutorial](https://www.youtube.com/watch?v=sWRDmJBAAu8) 58:00
@@ -593,3 +635,6 @@ Colro :
 
 https://androidstudio.googleblog.com/2019/10/android-emulator-hypervisor-driver-for.html
 https://github.com/google/android-emulator-hypervisor-driver-for-amd-processors/wiki/Is-Hyper-V-really-disabled%3F
+
+belum :
+PixelRatio, KeyboardAvoidingView, Animated, DrawerLayoutAndroid, SectionList
