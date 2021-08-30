@@ -103,10 +103,31 @@ import {Image} from 'react-native';
   - suber dari online
 
   ```js
-  <Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} />
+  <Image
+    source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+    style={{}}
+  />
   ```
 
-4. [TextInput](https://reactnative.dev/docs/textinput)
+4. [Image Background](https://reactnative.dev/docs/imagebackground)
+
+- Inport component
+
+```js
+import {ImageBackground} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+<ImageBackground
+  source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+  style={{}}>
+  <Text>Isi dari gambar</Text>
+</ImageBackground>
+```
+
+5. [TextInput](https://reactnative.dev/docs/textinput)
 
 - Inport component
 
@@ -220,8 +241,46 @@ import {FlatList} from 'react-native';
 - Cara pengunaan
 
 ```js
+this.state = {
+  // list
+  data: [1, 2, 3, 4, 5];
 
+
+};
+// dengan object
+const dataPembayaran = [
+    {
+      namaBarang: 'Apel',
+      harga: 10000
+    },
+    {
+      namaBarang: 'Jeruk',
+      harga: 12000
+    },
+  ];
+
+// Dengan List
+<FlatList
+  data={this.state.data}
+  renderItem={({item, index}) => <Text>{item} | {index}</Text>}
+  // key digunakan untuk membedakan data 1 dengan lain seprti primary key
+  keyExtractor={(item) => item.toString()}
+/>
+
+// Dengan Object
+<FlatList
+  data={dataPembayaran}
+  renderItem={({item, index}) =>
+    <View>
+      <Text>{item.namaBarang}</Text>
+      <Text>{item.harga}</Text>
+    </View>}
+      // key digunakan untuk membedakan data 1 dengan lain seperti primary key
+  keyExtractor={(item) => item.namabarang}
+/>
 ```
+
+> FlatList dapat di style sesuai keingginan
 
 2. [SectionList](https://reactnative.dev/docs/sectionlist)
 
@@ -240,6 +299,7 @@ import {SectionList} from 'react-native';
 ## [Android-Specific](https://reactnative.dev/docs/components-and-apis#android-components-and-apis)
 
 1. [BackHandler](https://reactnative.dev/docs/backhandler)
+   > BackHandler merupakan saat akan back keluar dari apllikasi maka, jika kita mengunakan backHandler maka akan ada peringatan.
 
 - Inport component
 
@@ -250,7 +310,30 @@ import {BackHandler} from 'react-native';
 - Cara pengunaan
 
 ```js
+backAction = () => {
+  Alert.alert('Perhatian', 'Apakah anda yakin untuk menutup aplikasi ?', [
+    {
+      text: 'Cancel',
+      onPress: () => null,
+      style: 'Cancel',
+    },
+    {
+      text: 'Yes',
+      onPress: () => BackKandler.exitApp(),
+    },
+  ]);
+  return true;
+};
 
+// dimana jika halaman sudah di load maka akan menjalankan funsgsi di bawah
+componentDidMount() {
+  this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.backAction);
+}
+
+// Yaitu saat akan keluar atau close aplikasi akan menjalankan fungsi di bawah
+componentWillUnmount() {
+  this.backHandler.remove();
+}
 ```
 
 2. [DrawerLayoutAndroid](https://reactnative.dev/docs/drawerlayoutandroid)
@@ -268,6 +351,7 @@ import {DrawerLayoutAndroid} from 'react-native';
 ```
 
 3. [PermissionsAndroid](https://reactnative.dev/docs/permissionsandroid)
+   > Merupakan cara untuk meminta izin mengunakan suatu akses pada SmartPhone
 
 - Inport component
 
@@ -276,9 +360,38 @@ import {PermissionsAndroid} from 'react-native';
 ```
 
 - Cara pengunaan
+  > Jenis [Perizzinan](https://reactnative.dev/docs/permissionsandroid#permissions-that-require-prompting-the-user) banyak jenisnya
 
 ```js
+requestCameraPermision = async () => {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA,
+      {
+        title: 'Acsess',
+        massage: 'Izinkan aplikasi mengakses camera',
+        buttonNeutral: 'Nanti',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
+      },
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+```
 
+- Mengatur perizinan pada AndroidManifest.xml
+
+```
+android/app/src/main/AndroidManifest.xml
+```
+
+- Contoh permision pada AndroidManifast.xml
+
+```xml
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 ```
 
 4. [ToastAndroid](https://reactnative.dev/docs/toastandroid)
@@ -289,15 +402,187 @@ import {PermissionsAndroid} from 'react-native';
 import {ToastAndroid} from 'react-native';
 ```
 
+> ToactAndorid biasanya di letak kan pada button atau setelah proses terjadi
+
 - Cara pengunaan
 
 ```js
+  // SHORT merupakan waktu Toast muncul
+  onPress={() => ToastAndorid.show('Proses Berhasil !', ToastAndorid.SHORT)}
 
 ```
 
 ## [ios-specific](https://reactnative.dev/docs/components-and-apis#ios-components-and-apis)
 
 ## [Others](https://reactnative.dev/docs/components-and-apis#others)
+
+1. [Activityindicator](https://reactnative.dev/docs/activityindicator)
+   > Tampilan Loading pada Andorid
+
+- Inport component
+
+```js
+import {ActivityIndicator} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+<ActivityIndicator animating={true} size="small" color="#0000ff" />
+```
+
+2. [Alert](https://reactnative.dev/docs/alert)
+   > Tampilan Loading pada Andorid
+
+- Inport component
+
+```js
+import {Alert} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+3. [Animated](https://reactnative.dev/docs/animated)
+   > Tampilan Loading pada Andorid
+
+- Inport component
+
+```js
+import {Animated} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+4. [Dimensions](https://reactnative.dev/docs/dimensions)
+   > Digunakan untuk mengetahui ukuran windows ataupun screen
+
+- Inport component
+
+```js
+import {Dimensions} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+// Ukuran window aplikasi
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+// Ukuran Screen
+const windowWidth = Dimensions.get('screen').width;
+const windowHeight = Dimensions.get('screen').height;
+```
+
+5. [KeyboardAvoidingView](https://reactnative.dev/docs/keyboardavoidingview)
+   > Tampilan Loading pada Andorid
+
+- Inport component
+
+```js
+import {KeyboardAvoidingView} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+6. [Linking](https://reactnative.dev/docs/linking)
+   > Link pada sebuah plikasi atau situs website
+
+- Inport component
+
+```js
+import {Linking} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+Linking.canOpenURL('https://reactnative.dev/docs/linking');
+```
+
+7. [Modal](https://reactnative.dev/docs/modal)
+   > Tampilan Loading pada Andorid
+
+- Inport component
+
+```js
+import {Modal} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+8. [PixelRatio](https://reactnative.dev/docs/pixelratio)
+   > Tampilan Loading pada Andorid
+
+- Inport component
+
+```js
+import {PixelRatio} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+9. [RefreshControl](https://reactnative.dev/docs/refreshcontrol)
+   > Tampilan yang akan muncul saat kita menarik sebuah komponenet, biasanya di letakkan pada component yang dapat di scrool
+
+- Inport component
+
+```js
+import {RefreshControl} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+this.state = {
+  refresh: false,
+}
+
+refreshControl={
+  // onRefresh digunakan saat scrool di tarik dan terjadi refresh maka onRefresh akan di jalanakn
+  <RefreshControl refreshing={this.state.refresh} onRefresh= () => {
+    console.log('refresing');
+    this.setState({refresh: false})
+    )}
+    />
+}
+
+```
+
+10. [StatusBar](https://reactnative.dev/docs/statusbar)
+    > Tampilan Loading pada Andorid
+
+- Inport component
+
+```js
+import {RefreshControl} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
 
 [Tutorial](https://www.youtube.com/watch?v=sWRDmJBAAu8) 58:00
 
