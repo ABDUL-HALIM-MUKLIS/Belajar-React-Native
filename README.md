@@ -48,7 +48,7 @@
 
 ## [Basic Components](https://reactnative.dev/docs/components-and-apis#basic-components)
 
-1. View
+1. [View](https://reactnative.dev/docs/view)
 
 - Inport component
 
@@ -70,7 +70,7 @@ import {View} from 'react-native';
   <View ..disi property.. />
   ```
 
-2. Text
+2. [Text](https://reactnative.dev/docs/text)
 
 - Inport component
 
@@ -84,7 +84,7 @@ import {Text} from 'react-native';
 <Text>...</Text>
 ```
 
-3. Image
+3. [Image](https://reactnative.dev/docs/image)
 
 - Inport component
 
@@ -106,7 +106,7 @@ import {Image} from 'react-native';
   <Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} />
   ```
 
-4. TextInput
+4. [TextInput](https://reactnative.dev/docs/textinput)
 
 - Inport component
 
@@ -120,7 +120,7 @@ import {TextInput} from 'react-native';
 <TextInput .. isi dengan property ../>
 ```
 
-5. ScrollView
+5. [ScrollView](https://reactnative.dev/docs/scrollview)
 
 - Inport component
 
@@ -134,7 +134,7 @@ import {ScrollView} from 'react-native';
 <ScrollView>...</ScrollView>
 ```
 
-6. StyleSheet
+6. [StyleSheet](https://reactnative.dev/docs/stylesheet)
 
 - Inport component
 
@@ -165,9 +165,135 @@ const styles = StyleSheet.create({
 
 ## [User interface](https://reactnative.dev/docs/components-and-apis#user-interface)
 
+1. [Button](https://reactnative.dev/docs/button)
+
+- Inport component
+
+```js
+import {StyleSheet} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+<Button
+  onPress={onPressLearnMore}
+  title="Learn More"
+  color="#841584"
+  accessibilityLabel="Learn more about this purple button"
+/>
+```
+
+2. [switch](https://reactnative.dev/docs/switch)
+
+- Inport component
+
+```js
+import {Switch} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+const [isEnabled, setIsEnabled] = useState(false);
+const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+<Switch
+  trackColor={{false: '#767577', true: '#81b0ff'}}
+  thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+  ios_backgroundColor="#3e3e3e"
+  onValueChange={toggleSwitch}
+  value={isEnabled}
+/>;
+```
+
 ## [list Views](https://reactnative.dev/docs/components-and-apis#list-views)
 
+1. [FlatList](https://reactnative.dev/docs/flatlist)
+
+- Inport component
+
+```js
+import {FlatList} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+2. [SectionList](https://reactnative.dev/docs/sectionlist)
+
+- Inport component
+
+```js
+import {SectionList} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
 ## [Android-Specific](https://reactnative.dev/docs/components-and-apis#android-components-and-apis)
+
+1. [BackHandler](https://reactnative.dev/docs/backhandler)
+
+- Inport component
+
+```js
+import {BackHandler} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+2. [DrawerLayoutAndroid](https://reactnative.dev/docs/drawerlayoutandroid)
+
+- Inport component
+
+```js
+import {DrawerLayoutAndroid} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+3. [PermissionsAndroid](https://reactnative.dev/docs/permissionsandroid)
+
+- Inport component
+
+```js
+import {PermissionsAndroid} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
+
+4. [ToastAndroid](https://reactnative.dev/docs/toastandroid)
+
+- Inport component
+
+```js
+import {ToastAndroid} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+
+```
 
 ## [ios-specific](https://reactnative.dev/docs/components-and-apis#ios-components-and-apis)
 
