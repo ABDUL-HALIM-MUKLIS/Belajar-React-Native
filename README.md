@@ -24,32 +24,156 @@
     yarn android
 ```
 
-# Membuat Hallo Word
+# Membuat [Navigation](https://reactnavigation.org/)
 
-1. Pengunaan komponent
-   > Sebelum mengunakan Componen harus meng inport library
+- Install navigation
 
-```js
-import {View, Text} from 'react-native';
+```
+  yarn add @react-navigation/native
 ```
 
-- Cara penggunaan
+- Install dependencial
 
-```js
-<View>
-  <Text>Hello Word!</Text>
-</View>
+```
+  yarn add react-native-screens react-native-safe-area-context
 ```
 
-- Penggunaan Style
+- Install Native Stack library
 
-```js
-<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-  <Text>Hello Word 1!</Text>
-</View>
+```
+  yarn add @react-navigation/native-stack
 ```
 
-[Tutorial](https://www.youtube.com/watch?v=sWRDmJBAAu8) 45:40
+# [Core Components and APIs](https://reactnative.dev/docs/components-and-apis#basic-components)
+
+## [Basic Components](https://reactnative.dev/docs/components-and-apis#basic-components)
+
+1. View
+
+- Inport component
+
+```js
+import {View} from 'react-native';
+```
+
+- Cara pengunaan
+
+  - cara pertama
+
+  ```js
+  <View>...</View>
+  ```
+
+  - cara kedua
+
+  ```js
+  <View ..disi property.. />
+  ```
+
+2. Text
+
+- Inport component
+
+```js
+import {Text} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+<Text>...</Text>
+```
+
+3. Image
+
+- Inport component
+
+```js
+import {Image} from 'react-native';
+```
+
+- Cara pengunaan
+
+  - suber dari penyimpanan
+
+  ```js
+  <Image source={require('@expo/snack-static/react-native-logo.png')} />
+  ```
+
+  - suber dari online
+
+  ```js
+  <Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} />
+  ```
+
+4. TextInput
+
+- Inport component
+
+```js
+import {TextInput} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+<TextInput .. isi dengan property ../>
+```
+
+5. ScrollView
+
+- Inport component
+
+```js
+import {ScrollView} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+<ScrollView>...</ScrollView>
+```
+
+6. StyleSheet
+
+- Inport component
+
+```js
+import {StyleSheet} from 'react-native';
+```
+
+- Cara pengunaan
+
+```js
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    ... style lainya
+  },
+  title: {
+    marginTop: 16,
+    ... style lainya
+  },
+});
+```
+
+- Pemangilan
+
+```js
+<Text style={style.title}></Text>
+```
+
+## [User interface](https://reactnative.dev/docs/components-and-apis#user-interface)
+
+## [list Views](https://reactnative.dev/docs/components-and-apis#list-views)
+
+## [Android-Specific](https://reactnative.dev/docs/components-and-apis#android-components-and-apis)
+
+## [ios-specific](https://reactnative.dev/docs/components-and-apis#ios-components-and-apis)
+
+## [Others](https://reactnative.dev/docs/components-and-apis#others)
+
+[Tutorial](https://www.youtube.com/watch?v=sWRDmJBAAu8) 58:00
 
 Refrensi :
 
