@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, SectionList, SafeAreaView} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-// import Komponent from './page/component/Komponent';
+
 
 class Coba extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class Coba extends Component {
     }
     render() {
         return (
-            <View>
+            <SafeAreaView style={style.container}>
                 <View style={{ 
                 alignItems: 'center', 
                 justifyContent: 'center',
@@ -19,13 +20,13 @@ class Coba extends Component {
                 }}>
                     <Text>COBA</Text>
                 </View>
-                
+                        
                 <View>
+                </View>
                     
 
-                </View>
                 
-            </View>
+            </SafeAreaView>
 
         );
     }
@@ -39,6 +40,11 @@ const style = StyleSheet.create({
         backgroundColor: '#4e342e',
         paddingVertical: 10,
         borderRadius: 50,
+    },
+    container: {
+        flex: 1,
+        // paddingTop: StatusBar.currentHeight,
+        // marginHorizontal: 16
     },
     
 })

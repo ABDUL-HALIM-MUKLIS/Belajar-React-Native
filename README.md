@@ -291,9 +291,94 @@ import {SectionList} from 'react-native';
 ```
 
 - Cara pengunaan
+  - Data
 
 ```js
+const DATA = [
+  {
+    title: 'Main dishes',
+    data: ['Pizza', 'Burger', 'Risotto'],
+  },
+  {
+    title: 'Sides',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
+  },
+  {
+    title: 'Drinks',
+    data: ['Water', 'Coke', 'Beer'],
+  },
+  {
+    title: 'Desserts',
+    data: ['Cheese Cake', 'Ice Cream', 'Donut'],
+  },
+];
 
+// untuk item
+const Item = ({title}) => (
+  <View style={style.item}>
+    <Text style={style.title}>{title}</Text>
+  </View>
+);
+```
+
+- Render
+
+```js
+<SafeAreaView style={style.container}>
+  <View
+    style={{
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 10,
+      backgroundColor: '#ffab40',
+    }}>
+    <Text>COBA</Text>
+  </View>
+
+  <View style={{marginHorizontal: 40}}>
+    <SectionList
+      sections={DATA}
+      keyExtractor={(item, index) => item + index}
+      renderItem={({item}) => <Item title={item} />}
+      renderSectionHeader={({section: {title}}) => (
+        <Text style={style.header}>{title}</Text>
+      )}
+    />
+  </View>
+</SafeAreaView>
+```
+
+- StyleSheet
+
+```js
+const style = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    marginVertical: 10,
+    marginHorizontal: 60,
+    backgroundColor: '#4e342e',
+    paddingVertical: 10,
+    borderRadius: 50,
+  },
+  container: {
+    flex: 1,
+    // paddingTop: StatusBar.currentHeight,
+    // marginHorizontal: 16
+  },
+  item: {
+    backgroundColor: '#fff',
+    padding: 10,
+    // marginVertical: 8
+  },
+  header: {
+    fontSize: 32,
+    backgroundColor: '#4e342e',
+    color: '#ffffff',
+  },
+  title: {
+    fontSize: 24,
+  },
+});
 ```
 
 ## [Android-Specific](https://reactnative.dev/docs/components-and-apis#android-components-and-apis)
