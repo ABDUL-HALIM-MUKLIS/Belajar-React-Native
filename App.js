@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from './page/Home';
+import Coba from './page/Coba';
 import Komponent from './page/component/Komponent';
 import BasicComponet from './page/component/BasicComponet';
 import UseIn from './page/component/UseIn';
@@ -18,6 +19,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Coba" component={Coba} />
         <Stack.Screen name="Text_Component" component={Komponent} />
         <Stack.Screen name="Basic_Componet" component={BasicComponet} />
         <Stack.Screen name="User_Interface" component={UseIn} />

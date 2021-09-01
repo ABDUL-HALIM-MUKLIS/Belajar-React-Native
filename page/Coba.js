@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 
 // import Komponent from './page/component/Komponent';
 
-class Home extends Component {
+class Coba extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -17,25 +17,11 @@ class Home extends Component {
                 paddingVertical: 10,
                 backgroundColor: '#ffab40',
                 }}>
-                    <Text>HOME</Text>
+                    <Text>COBA</Text>
                 </View>
                 
                 <View>
-                    <TouchableOpacity 
-                    style={style.button}
-                    onPress={() => this.props.navigation.navigate('Text_Component')}>
-                        <Text style={{ 
-                            color: '#FFFFFF'
-                        }}>Component</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity 
-                    style={style.button}
-                    onPress={() => this.props.navigation.navigate('Coba')}>
-                        <Text style={{ 
-                            color: '#FFFFFF'
-                        }}>COBA</Text>
-                    </TouchableOpacity>
+                    
 
                 </View>
                 
@@ -57,4 +43,4 @@ const style = StyleSheet.create({
     
 })
 
-export default Home;
+export default Coba;
